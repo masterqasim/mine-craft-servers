@@ -1,6 +1,7 @@
 import { display } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
+import ServersTable from "../components/serversTable";
 import { getCountries } from "../network/network";
 
 function Home() {
@@ -52,13 +53,13 @@ function Home() {
   return (
     <Layout>
       <div className="h-24" style={{ background: "#ECEEEF" }}></div>
-      <div className="w-4/6 mx-auto h-[1200px]">
+      <div className=" md:w-9/12 w-11/12 mx-auto h-[1200px]">
         <h1 className="text-black text-4xl mt-10 font-thin mb-10">
           Best Minecraft Servers
         </h1>
         <hr />
         <div className="flex mt-4">
-          <div className="w-4/6">
+          <div className="w-full md:w-4/6">
             <p className="text-black text-sm mb-4">
               Top Minecraft Servers lists some of the{" "}
               <b>Best Minecraft Servers</b> on the web to play on. Browse down
@@ -84,11 +85,11 @@ function Home() {
             <p className="text-black"></p>
           </div>
         </div>
-        <div className="w-full flex mt-10 align-center justify-between">
+        <div className="w-full flex-column  md:flex mt-10 align-center justify-between">
           {dropDownData.map((val) => {
             return (
               <div>
-                <button className="peer w-[200px] py-2 bg-[#222222] text-white">
+                <button className="peer  mt-2 w-full md:w-[200px] py-2 bg-[#222222] text-white">
                   <span className="flex justify-center align-center">
                     {val.label}
                     <svg
@@ -109,11 +110,11 @@ function Home() {
                   </span>
                 </button>
 
-                <div className="hidden w-[200px] h-[250px] overflow-auto	 absolute peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg">
+                <div className="hidden w-11/12 md:w-[200px] h-[250px] overflow-auto	 absolute peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg">
                   {val?.list?.map((dropDownVal) => {
                     return (
                       <a
-                        className="px-5 py-3 text-black text-[14px] hover:bg-[#2780E3] hover:text-white"
+                        className="px-2 md:text-left text-center py-3 text-black text-[14px] hover:bg-[#2780E3] hover:text-white"
                         href="#"
                       >
                         {dropDownVal.value && (
@@ -141,86 +142,31 @@ function Home() {
             );
           })}
         </div>
-        <div className="flex flex-col mt-5">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                <table className="min-w-full text-center">
-                  <thead className="border text-black bg-gray-100">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium  py-4 border w-1/12"
-                      >
-                        Rank
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text py-4 border-r px-3 w-full"
-                      >
-                        Featured Server
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-7 py-4 border-r"
-                      >
-                        About
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Array(5)
-                      .fill("1")
-                      .map((val, i) => {
-                        return (
-                          <tr className="bg-white border">
-                            <td className=" py-4 whitespace-nowrap text-sm font-medium text-gray-900 border">
-                              {i + 1}
-                            </td>
-                            <td className="text-sm px-3 text-gray-900 font-light py-4 whitespace-nowrap border">
-                              <div className="mb-3 flex">
-                                <span className="border px-4 py-2 text-lg text-black text-base bg-gray-100">
-                                  IP:
-                                </span>
-                                <input
-                                  readOnly
-                                  value={"play.wumpussmp.ga"}
-                                  type="text"
-                                  className="w-full px-3 py-1.5 text-base text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300"
-                                  placeholder="Example label"
-                                />
-                                <button className="border text-white px-4 py-2 bg-[#2780E3]">
-                                  Copy!
-                                </button>
-                              </div>
-                            </td>
-                            <td className="text-sm text-gray-900 font-light px-2 py-4 whitespace-nowrap border">
-                              <div className="flex justify-between">
-                                <div className="border p-8">
-                                  <p>Players Online</p>
-                                  <p className="font-bold text-green-600 text-lg">
-                                    98
-                                  </p>
-                                </div>
-                                <div className=" p-2">
-                                  <p className="text-[16px] font-bold">
-                                    MC Version: <span>1.90</span>
-                                  </p>
-                                  <p className="text-sm font-bold">
-                                    Game Modes:{" "}
-                                    <span className="font-[100]">Economy</span>
-                                    <span className="font-[100]">Economy</span>
-                                    <span className="font-[100]">Economy</span>
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </table>
-              </div>
+        <ServersTable />
+      </div>
+      <div className="w-full bg-gray-200 h-32 mt-10"></div>
+      <div className=" md:w-9/12 w-11/12 mx-auto h-[1200px]">
+        <div>
+          <h1 className="text-black text-4xl mt-10 font-thin mb-5">
+            The Best Minecraft Servers{" "}
+          </h1>
+          <div className="border-2">
+            <iframe
+              width="100%"
+              height="539"
+              src="https://www.youtube.com/embed/lNlaDt1uB-8"
+              title="I Survived 100 Days in Minecraft PRISON..."
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <div className="w-full bg-gray-100 h-32"></div>
+            <div className="w-full p-5">
+              <p className="text-black">
+                OPBlocks is a high-quality Minecraft Prison, Survival SMP,
+                Skyblock, and Pixelmon server featuring unique content and an
+                amazing community, friendly staff, and awesome players like you!
+              </p>
             </div>
           </div>
         </div>
