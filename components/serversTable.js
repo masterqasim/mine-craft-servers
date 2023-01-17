@@ -12,13 +12,13 @@ const ServersTable = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="text-sm hidden md:block font-medium  py-4 border w-1/12"
+                      className="text-sm hidden md:block font-medium  py-4 w-1/12"
                     >
                       Rank
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text py-4 border-r px-3 w-full"
+                      className="text-sm font-medium text py-4 border-r border-l px-3 w-full"
                     >
                       Featured Server
                     </th>
