@@ -20,13 +20,13 @@ const AddServer = () => {
         <div className="md:w-8/12 mx-auto mt-10 bg-gray-100 px-4 py-4 border">
           <h1 className="text-black text-2xl  mb-3">Server Setup</h1>
           <hr className="bg-gray-300" />
-          <div className=" bg-[#9954BB] p-5 mt-5">
-            <p>
+          <div className=" bg-[#9954BB] p-5 mt-5 text-white">
+            <p >
               Please do not add servers if you are not the owner/admin. If
               you're having any problems, feel free to contact us.
             </p>
             <hr className="bg-purple-900 my-5 h-[0.7px] border-0" />
-            <p>
+            <p >
               ⚠️ We DO NOT accept free hosted servers like Aternos, ServerPro,
               Minehut, Freemcserver, FalixNodes, etc...
             </p>

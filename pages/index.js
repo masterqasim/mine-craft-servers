@@ -53,7 +53,7 @@ function Home() {
   return (
     <Layout>
       <div className="h-24" style={{ background: "#ECEEEF" }}></div>
-      <div className=" md:w-9/12 w-11/12 mx-auto h-[1200px]">
+      <div className=" md:w-7/12 w-11/12 mx-auto h-[1200px]">
         <h1 className="text-black text-4xl mt-10 font-thin mb-10">
           Best Minecraft Servers
         </h1>
@@ -71,12 +71,11 @@ function Home() {
             <hr />
             <div className="flex mt-5">
               <div
-                className="w-full text-center py-5 text-xl"
-                style={{ background: "#2780E3" }}
+                className="w-full text-center py-5 text-xl bg-[#2780E3] text-white cursor-pointer hover:bg-[#1967be]"
               >
                 Register
               </div>
-              <div className="w-full text-center bg-[#222222] py-5 text-xl">
+              <div className="w-full text-center bg-[#222222] py-5 text-xl text-white cursor-pointer">
                 Login
               </div>
             </div>

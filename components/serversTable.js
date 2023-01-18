@@ -40,6 +40,7 @@ const ServersTable = () => {
                             {i + 1}
                           </td>
                           <td className="text-sm px-3 text-gray-900 font-light py-4 whitespace-nowrap border">
+                            <img className="lazy mb-3 flex" itemprop="image" height="60" width="468" alt="👽 top.opblocks.com | OPBlocks " title="" src="https://topminecraftservers.org/banners/13709.gif?v=1669896196" data-original="/banners/19530.gif?v=1673317648" data-toggle="tooltip" data-original-title="👽 top.opblocks.com | OPBlocks " style={{display: 'inline'}}/>
                             <div className="mb-3 flex">
                               <span className="border px-4 py-2 text-lg text-black text-base bg-gray-100">
                                 IP:
