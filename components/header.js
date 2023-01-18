@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Header = () => {
+  const [showNav, setShowNav] = useState(false);
   return (
     <div className="bg-[#222222] p-2">
       <nav class="flex items-center justify-between md:w-9/12 w-11/12 mx-auto flex-wrap">
@@ -11,7 +12,10 @@ const Header = () => {
           </span>
         </div>
         <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button
+            onClick={() => setShowNav(!showNav)}
+            class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+          >
             <svg
               class="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -22,7 +26,11 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div
+          className={`w-full block flex-grow ${
+            !showNav && " hidden"
+          } lg:flex lg:items-center lg:w-auto`}
+        >
           <div class="text-sm lg:flex-grow">
             <a
               href="#responsive-header"
@@ -78,16 +86,16 @@ const Header = () => {
 
             <a
               href="#responsive-header"
-              class="block mt-4 lg:inline-block lg:mt-0 text-white"
+              class="block mt-4 lg:inline-block lg:mt-0 text-white mr-5"
             >
               Sponsored
             </a>
-            <a
-              href="#responsive-header"
-              class="block mt-4 lg:inline-block lg:mt-0 text-white ml-4"
+            <Link
+              href="./contact"
+              class="block mt-4 lg:inline-block lg:mt-0 text-white"
             >
               Contact
-            </a>
+            </Link>
           </div>
           <div>
             <input type="text" placeholder="Search..." className="p-2 m-0" />
