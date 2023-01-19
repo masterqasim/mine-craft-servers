@@ -69,12 +69,12 @@ const Header = () => {
               </button>
 
               <div className="hidden w-11/12 md:w-[150px] overflow-auto absolute peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg">
-                <a
+                <Link
                   className="px-2 md:text-left text-center py-3 text-black text-[14px] hover:bg-[#2780E3] hover:text-white"
-                  href="#"
+                  href="./my_server"
                 >
                   My Servers
-                </a>
+                </Link>
                 <Link
                   className="px-2 md:text-left text-center py-3 text-black text-[14px] hover:bg-[#2780E3] hover:text-white"
                   href="./add_server"

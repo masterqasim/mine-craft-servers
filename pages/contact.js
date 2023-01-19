@@ -41,7 +41,9 @@ const Contact = () => {
               className="p-2 w-full border-[0.7px] border-gray-300 mt-1"
             />
           </div>
-          <button className="px-4 py-3 bg-[#2780E3] mt-5">Send Message</button>
+          <button className="px-4 py-3 bg-[#2780E3] mt-5 text-white">
+            Send Message
+          </button>
         </div>
       </div>
     </Layout>
