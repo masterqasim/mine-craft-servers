@@ -1,8 +1,22 @@
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState ,useEffect} from "react";
 import Layout from "../components/layout";
 
 const Contact = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+      async function fetchData() {
+          const response = await fetch('http://localhost:3002/v1/servers/my-servers/server1');
+          const json = await response.json();
+          setData(json);
+
+          console.log(json)
+      }
+      fetchData();
+  }, []);
+
+
   return (
     <Layout>
       <div className=" md:w-9/12 w-11/12 mx-auto mb-5">
@@ -70,14 +84,12 @@ const Contact = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array(5)
-                      .fill("1")
-                      .map((val, i) => {
+                    {data?.map((val, i) => {
                         return (
                           <tr className="bg-white border">
                             <td className="block py-4 whitespace-nowrap text-sm font-medium ">
-                              <a href="#" className="text-blue-500">
-                                Snapcraft
+                              <a href="server/{$val.id}" className="text-blue-500">
+                                {val.name }
                               </a>
                             </td>
                             <td className="text-sm px-3 text-gray-900 font-light py-4 whitespace-nowrap border">
@@ -85,7 +97,7 @@ const Contact = () => {
                                 <input
                                   readOnly
                                   value={
-                                    "https://topminecraftservers.org/vote/30822"
+                                    `${val.ip}`
                                   }
                                   type="text"
                                   className="w-full px-3 py-1.5 text-base text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300"
