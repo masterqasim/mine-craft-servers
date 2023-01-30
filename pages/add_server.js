@@ -3,6 +3,11 @@ import Layout from "../components/layout";
 import Reaptcha from "reaptcha";
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { styled } from '@mui/material/styles';
+import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
+// import TagFacesIcon from '@mui/icons-material/TagFaces';
+
 
 const countries = [
   'Netherlands' ,'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla',
@@ -42,6 +47,7 @@ const countries = [
   'Venezuela', 'Vietnam', 'Virgin Islands (US)', 'Yemen', 'Zambia', 'Zimbabwe']
 
   const categoryList = [
+    'select',
     'Adventure',
     'Agrarian Skies',
     'Annihilation',
@@ -51,6 +57,9 @@ const countries = [
     'Blocks Vs Zombies'
   ]
 
+  const ListItem = styled('li')(({ theme }) => ({
+    margin: theme.spacing(0.5),
+  }));
 
 const AddServer = () => {
     const [captchaToken, setCaptchaToken] = useState(null);
@@ -66,6 +75,13 @@ const AddServer = () => {
     const [banner, setBanner] = useState(null);
     const [isVotified, setIsVotified] = useState(false);
     const [serverCreated, setServerCreated] = useState(false);
+    const [chipData, setChipData] = React.useState([
+      'Adventure'
+    ]);
+    const handleDelete = (chipToDelete) => () => {
+      setCategory('')
+      setChipData((chips) => chips.filter((chip) => chip !== chipToDelete));
+    };
 
     async function createServer(formData) {
       try {
@@ -104,7 +120,7 @@ const AddServer = () => {
     formData.append('name', name);
     formData.append('ip', ip);
     formData.append('website', website);
-    formData.append('category', category);
+    formData.append('category', `${chipData}`);
     formData.append('contry', contry);
     formData.append('youtubeVideo', youtubeVideo);
     formData.append('description', description);
@@ -191,26 +207,49 @@ const AddServer = () => {
               />
             </div>
             <div className="mt-8">
-              <label className="text-black font-bold text-sm">
+            <label className="text-black font-bold text-sm">
                 Categories/Tag (At Least 1 REQUIRED! )
-              </label>
-              {/* <input
-                type="text"
-                name="category" 
-                value={category} 
-                onChange={e => setCategory(e.target.value)} 
-                placeholder="Category"
-                className="p-2 w-full border-[0.7px] border-gray-300 mt-1"
-              /> */}
-              <select 
+            </label>
+            <select 
               value={category} 
               placeholder="category"
               className="p-2 w-full border-[0.7px] border-gray-300 mt-1"
-              onChange={e => setCategory(e.target.value)}>
+              onChange={e => {
+                setCategory(e.target.value)
+                setChipData([...chipData,e.target.value])
+
+                }}>
                 {categoryList.map((category, i) => (
-                    <option key={i} value={category}>{category}</option>
+                  chipData.includes(category)?
+                  
+                    <option key={i} value={category} disabled>{category}</option>
+                  :
+                    <option key={i} value={category} >{category}</option>
                 ))}
             </select>
+            <Paper
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  listStyle: 'none',
+                  p: 0.5,
+                  m: 0,
+                }}
+                component="ul"
+              >
+                {chipData.map((data,i) => {
+                  return (
+                    <ListItem key={i}>
+                      <Chip
+                        label={data}
+                        onDelete={handleDelete(data)}
+                      />
+                    </ListItem>
+                  );
+                })}
+              </Paper>
+             
             </div>
             <div className="mt-8">
               <label className="text-black font-bold text-sm">Country</label>

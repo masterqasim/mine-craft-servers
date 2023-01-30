@@ -1,11 +1,14 @@
 import Link from "next/link";
 import React, { useRef, useState ,useEffect} from "react";
 import Layout from "../components/layout";
+import { useRouter } from 'next/router'
 
 const Contact = () => {
   const [data, setData] = useState(null);
+  const router = useRouter()
 
   useEffect(() => {
+
       async function fetchData() {
           const response = await fetch('http://localhost:3002/v1/servers/my-servers/server1');
           const json = await response.json();
@@ -88,9 +91,9 @@ const Contact = () => {
                         return (
                           <tr className="bg-white border">
                             <td className="block py-4 whitespace-nowrap text-sm font-medium ">
-                              <a href="server/{$val.id}" className="text-blue-500">
+                              <Link href={`server/${val.id}`}  className="text-blue-500">
                                 {val.name }
-                              </a>
+                              </Link>
                             </td>
                             <td className="text-sm px-3 text-gray-900 font-light py-4 whitespace-nowrap border">
                               <div className="mb-3 flex">
